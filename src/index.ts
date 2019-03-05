@@ -1,6 +1,9 @@
-import { Context, Handler, NEXT } from 'http2-router';
+import { Context, Handler } from 'http2-router';
 
-export function http2RouterCors( options?: null ): Handler {
+export function http2RouterCors(
+  /** NEXT is a distinct symbol and must therefore come from the same router */
+  { NEXT }: { NEXT: any }
+): Handler {
 
   return function ( ctx: Context ) {
 

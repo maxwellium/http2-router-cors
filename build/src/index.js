@@ -1,7 +1,8 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const http2_router_1 = require("http2-router");
-function http2RouterCors(options) {
+function http2RouterCors(
+/** NEXT is a distinct symbol and must therefore come from the same router */
+{ NEXT }) {
     return function (ctx) {
         const { req: { method }, res } = ctx;
         if (method === 'OPTIONS') {
@@ -13,7 +14,7 @@ function http2RouterCors(options) {
             return;
         }
         res.setHeader('Access-Control-Allow-Origin', '*');
-        return http2_router_1.NEXT;
+        return NEXT;
     };
 }
 exports.http2RouterCors = http2RouterCors;
